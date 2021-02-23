@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>upload</title>
+</head>
+<script src="../static/jquery-3.5.1.min.js"></script>
+<style>
+    body {
+        color: #405D68;
+    }
+
+    form {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    p {
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        transform: translate(-50%, -50%);
+        font-size: 30px;
+        color: #46A3FF;
+    }
+
+    span {
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+        color: #46A3FF;
+    }
+
+    /*a  upload */
+    .a-upload {
+        padding: 4px 10px;
+        height: 20px;
+        line-height: 20px;
+        position: relative;
+        cursor: pointer;
+        color: #888;
+        background: #fafafa;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        overflow: hidden;
+        display: inline-block;
+        *display: inline;
+        *zoom: 1
+    }
+
+    .a-upload input {
+        position: absolute;
+        font-size: 200px;
+        right: 0;
+        top: 0;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        cursor: pointer
+    }
+
+    .a-upload:hover {
+        color: #444;
+        background: #eee;
+        border-color: #ccc;
+        text-decoration: none
+    }
+
+    .file {
+        position: relative;
+        display: inline-block;
+        background: #D0EEFF;
+        border: 1px solid #99D3F5;
+        border-radius: 4px;
+        padding: 4px 12px;
+        overflow: hidden;
+        color: #1E88C7;
+        text-decoration: none;
+        text-indent: 0;
+        line-height: 20px;
+    }
+
+    .file input {
+        position: absolute;
+        font-size: 200px;
+        right: 0;
+        top: 0;
+        opacity: 0;
+    }
+
+    .file:hover {
+        background: #AADFFD;
+        border-color: #78C3F3;
+        color: #004974;
+        text-decoration: none;
+    }
+
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    video {
+        position: fixed;
+        right: 0px;
+        bottom: 0px;
+        min-width: 100%;
+        min-height: 100%;
+        height: auto;
+        width: auto;
+        /*加滤镜*/
+        /*filter: blur(15px); //背景模糊设置 */
+        /*-webkit-filter: grayscale(100%);*/
+        /*filter:grayscale(100%); //背景灰度设置*/
+        z-index: -11
+    }
+
+    source {
+        min-width: 100%;
+        min-height: 100%;
+        height: auto;
+        width: auto;
+    }
+
+    div {
+        float: left;
+
+    }
+
+    a {
+        font-size: 30px;
+        text-decoration: none;
+        color: black;
+        font-family: "Microsoft JhengHei UI Light";
+    }
+
+    a:hover {
+        color: sandybrown;
+    }
+</style>
+<body>
+<video id="v1" autoplay loop muted>
+    <source src="../static/lin.mp4"/>
+</video>
+<p id="aa"></p>
+<div style="display:none" id="w">知乎问答页数据爬取与定位截图</div>
+<form action="/success" method="post" enctype="multipart/form-data">
+    <a href="javascript:;" class="a-upload">
+        <input type="file" name="file">点击上传excel
+    </a>
+    <a href="javascript:;" class="file">
+        <input type="submit" value="上传" style="">上传
+    </a>
+</form>
+<span><a href="/zhihu" style="color:#46A3FF;">点击爬取知乎热榜数据</a></span>
+<script type="text/javascript">
+    window.onload = type;
+    var index = 0;
+    var word = $("#w").html();
+
+    function type() {
+        $("#aa").html(word.substring(0, index++));
+        if (index > word.length) {
+            return;
+        } else {
+            setTimeout(type, 200);
+        }
+        ;
+    }
+</script>
+</body>
+</html>
